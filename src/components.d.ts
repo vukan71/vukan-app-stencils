@@ -34,6 +34,8 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface TranslatedComponent {
+    }
 }
 declare global {
     interface HTMLFirstComponentElement extends Components.FirstComponent, HTMLStencilElement {
@@ -48,9 +50,16 @@ declare global {
         prototype: HTMLSecondComponentElement;
         new (): HTMLSecondComponentElement;
     };
+    interface HTMLTranslatedComponentElement extends Components.TranslatedComponent, HTMLStencilElement {
+    }
+    var HTMLTranslatedComponentElement: {
+        prototype: HTMLTranslatedComponentElement;
+        new (): HTMLTranslatedComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "first-component": HTMLFirstComponentElement;
         "second-component": HTMLSecondComponentElement;
+        "translated-component": HTMLTranslatedComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -82,9 +91,12 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface TranslatedComponent {
+    }
     interface IntrinsicElements {
         "first-component": FirstComponent;
         "second-component": SecondComponent;
+        "translated-component": TranslatedComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -93,6 +105,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "first-component": LocalJSX.FirstComponent & JSXBase.HTMLAttributes<HTMLFirstComponentElement>;
             "second-component": LocalJSX.SecondComponent & JSXBase.HTMLAttributes<HTMLSecondComponentElement>;
+            "translated-component": LocalJSX.TranslatedComponent & JSXBase.HTMLAttributes<HTMLTranslatedComponentElement>;
         }
     }
 }
