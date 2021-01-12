@@ -19,7 +19,7 @@ export const config: Config = {
       copy: [
         {
           src: "**/*.i18n.*.json",
-          dest: "i18n"
+          dest: "assets/i18n"
         }
       ]
     },
